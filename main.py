@@ -6,7 +6,7 @@ keep_alive()
 
 import os
 
-CHANNEL_NAME = "загальний"
+CHANNEL_NAME = "🐦┃листування"
 
 TRACKED_GAMES = ["Among Us", "War Thunder", "World of Tanks Blitz", "World of Tanks", "Atomic Heart", "Escape from Tarkov", "RAGE Multiplayer", "World of Warships", "SnowRunner", "Crossout", "Warface", "MudRunner", "TLauncher", "Teardown"]
 
