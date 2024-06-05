@@ -4,6 +4,8 @@ from discord.ext import commands
 from keep_alive import keep_alive
 keep_alive()
 
+import os
+
 CHANNEL_NAME = "загальний"
 
 TRACKED_GAMES = ["Among Us", "War Thunder", "World of Tanks Blitz", "World of Tanks", "Atomic Heart", "Escape from Tarkov", "RAGE Multiplayer", "World of Warships", "SnowRunner", "Crossout", "Warface", "MudRunner", "TLauncher", "Teardown"]
@@ -30,4 +32,4 @@ async def on_presence_update(before: discord.Member, after: discord.Member):
                 break
         
 
-client.run(TOKEN)
+client.run(os.environ.get('TOKEN'))
