@@ -8,7 +8,7 @@ import os
 
 CHANNEL_NAME = "🐦┃листування"
 
-TRACKED_GAMES = ["War Thunder", "World of Tanks Blitz", "World of Tanks", "Atomic Heart", "Escape from Tarkov", "RAGE Multiplayer", "World of Warships", "SnowRunner", "Crossout", "Warface", "MudRunner", "TLauncher", "Teardown"]
+TRACKED_GAMES = ["War Thunder", "World of Tanks Blitz", "World of Tanks", "Atomic Heart", "Escape from Tarkov", "RAGE Multiplayer", "World of Warships", "SnowRunner", "Crossout", "Warface", "MudRunner", "TLauncher", "Teardown", "Breathedge", "DCS World Steam Edition", "Stay Out", "Vector", "Cut the Rope", "BLOCKADE", "Hello Neighbor", "King's Bounty II", "Pathfinder: Wrath of the Righteous - Enhanced Edition", "Black Book", "Beholder", "CRSED: Cuisine Royale", "ONRAID", "Life is Feudal: MMO", "Dark Lord", "Sumoman", "BE-A Walker", "CubeOS", "Kingmakers", "BLOCKPOST MOBILE", "Whisper Trip", "CASE 2: Animatronics Survival", "FPV Kamikaze Drone", "JustAxe", "Norland", "Badland Bandits", "FIELD BREAKING", "Mini Golf Arena", "Gravulse", "Black Fire", "MannaRites", "MannaRites Gold", "World War Z", "Warhammer 40,000: Space Marine 2", "War Robots", "WorldBox - God Simulator", "Men of War II"]
 
 intents = discord.Intents.default()
 intents.members = True
