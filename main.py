@@ -75,7 +75,8 @@ async def on_presence_update(before: discord.Member, after: discord.Member):
     if after.activities:
         for activity in after.activities:
             if activity.type == discord.ActivityType.playing and activity.name in TRACKED_GAMES:
-                await channel.send(f'{after.mention}, Ви граєте у **{activity.name}**!\n\n:bangbang: ЦЯ ГРА ВІД РОСІЙСЬКОГО ВИДАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! :bangbang:\n:bangbang: Граючи в цю гру - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang:')
+                if channel != None:
+                    await channel.send(f'{after.mention}, Ви граєте у **{activity.name}**!\n:bangbang: ЦЯ ГРА ВІД РОСІЙСЬКОГО ВИДАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! Граючи в цю гру - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang:')
                 break
 
 
