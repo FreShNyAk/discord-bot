@@ -9,7 +9,7 @@ CHANNEL_NAME = "🐦┃листування"
 TRACKED_GAMES = ["War Thunder", "World of Tanks Blitz", "World of Tanks", 
                  "Atomic Heart", "Escape from Tarkov", "RAGE Multiplayer", 
                  "World of Warships", "SnowRunner", "Crossout", 
-                 "Warface", "MudRunner", "TLauncher", 
+                 "Warface", "Spintires: MudRunner", "TLauncher", 
                  "Teardown", "Breathedge", "DCS World Steam Edition", 
                  "Stay Out", "Vector", "Cut the Rope", 
                  "BLOCKADE", "Hello Neighbor", "King's Bounty II", 
@@ -58,13 +58,38 @@ TRACKED_GAMES = ["War Thunder", "World of Tanks Blitz", "World of Tanks",
                  "IKO 39", "Reclusive", "Hamlet or the Last Game without MMORPG Features, Shaders and Product Placement",
                  "The Franz Kafka Videogame"]
 
+TRACKED_ARTISTS = ["FACE", "MORGENSHTERN", "SLAVA MARLOW", "Valery Meladze", "Sektor Gaza",
+                   "Korol i Shut", "Egor Kreed", "Шайни", "GONE.Fludd", "Trezvyy Zaryad",
+                   "Полина Крапива", "Karna.val", "Русский Корпус", "Б.А.У.", "Uggly",
+                   "Alla Pugacheva", "Philipp Kirkorov", "Dima Bilan", "Sergey Lazarev", "Nyusha",
+                   "Monetochka", "НАВЕРНОЕ ПОЭТ", "ЯКОРЪ", "EVEN CUTE", "AP$ENT",
+                   "Ani Lorak", "Polina Gagarina", "Little Big", "Maxim Fadeev", "MiyaGi & Endspiel",
+                   "Rem Digga", "Lastfragment", "Øneheart", "SHADXWBXRN", "DVRST",
+                   "FORGOTTENAGE", "KUTE", "BUSHIDO ZHO", "ENINA", "A4",
+                   "daryana", "FRIENDLY THUG 52 NGG", "ALBLAK 52", "uniqe", "nkeeei",
+                   "ARTEM SHILOVETS", "Voskresenskii", "Max Korzh", "LonelyStash", "Готлиб",
+                   "Кишлак", "АКУЛИЧ", "Молодой Платон", "Lida", "СЕРЕГА ПИРАТ",
+                   "Aarne", "ANIKV", "5mewmet", "whyspurky", "whylovly",
+                   "Poshlaya Molly", "fleurnothappy", "zhanulka", "Skryptonite", "1.Kla$",
+                   "Scally Milano", "uglystephan", "Женя Трофимов", "Комната культуры"]
+
+
 intents = discord.Intents.default()
 intents.members = True
 intents.presences = True
 
 client = discord.Client(intents=intents)
 
-
+def check_for_multiple_artists(activity_artist):
+    if activity_artist in TRACKED_ARTISTS:
+        return activity_artist
+    if ';' in activity_artist:
+        activity_artist_list = activity_artist.split(';')
+        for artist in activity_artist_list:
+            if artist.strip() in TRACKED_ARTISTS:
+                return artist.strip()
+    return None
+  
 @client.event
 async def on_ready():
     print(f'{client.user} is Online :)')
@@ -72,11 +97,15 @@ async def on_ready():
 @client.event
 async def on_presence_update(before: discord.Member, after: discord.Member):
     channel = discord.utils.get(after.guild.text_channels, name=CHANNEL_NAME)
-    if after.activities:
+    if after.activities and channel != None:
         for activity in after.activities:
-            if activity.type == discord.ActivityType.playing and activity.name in TRACKED_GAMES:
-                if channel != None:
-                    await channel.send(f'{after.mention}, Ви граєте у **{activity.name}**!\n:bangbang: ЦЯ ГРА ВІД РОСІЙСЬКОГО ВИДАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! Граючи в цю гру - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang:')
+            if activity.type == discord.ActivityType.listening:
+                activity_artist = check_for_multiple_artists(activity.artist)
+                if activity_artist != None:
+                    await channel.send(f'{after.mention}, Ви слухаєте **{activity_artist}**!\n\n:bangbang: ЦЯ МУЗИКА ВІД РОСІЙСЬКОГО ВИКОНАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! :bangbang:\n:bangbang: Слухаючи цю музику - підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang:')
+                    break
+            elif activity.type == discord.ActivityType.playing and activity.name in TRACKED_GAMES:
+                await channel.send(f'{after.mention}, Ви граєте у **{activity.name}**!\n\n:bangbang: ЦЯ ГРА ВІД РОСІЙСЬКОГО ВИДАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! :bangbang:\n:bangbang: Граючи цю гру - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang::')
                 break
 
 
