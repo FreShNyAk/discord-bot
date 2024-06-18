@@ -34,7 +34,7 @@ TRACKED_GAMES = ["War Thunder", "World of Tanks Blitz", "World of Tanks", "Atomi
                  "The Franz Kafka Videogame", "Diplomacy is Not an Option", "Pixel Gun 3D: PC Edition", "TRAIL OUT", "Buckshot Roulette", "Lust Goddess",
                  "Pine Harbor", "Farm Frenzy", "Bee Island", "Egg", "INDIKA", "Ranch Simulator - Build, Farm, Hunt",
                  "Mortal Shell", "Expeditions: A MudRunner Game", "Biped", "Gatekeeper", "Armored Warfare", "Please, Don’t Touch Anything",
-                 "Total Conflict: Resistance", "Will To Live Online", "Heartbound", "Spirit of the Island", "Unusual Findings", "World of Warplanes"]
+                 "Total Conflict: Resistance", "Will To Live Online", "Heartbound", "Spirit of the Island", "Unusual Findings", "World of Warplanes", "Banana"]
 
 TRACKED_ARTISTS = ["FACE", "MORGENSHTERN", "SLAVA MARLOW", "Valery Meladze", "Sektor Gaza",
                    "Korol i Shut", "Egor Kreed", "Шайни", "GONE.Fludd", "Trezvyy Zaryad",
@@ -49,7 +49,8 @@ TRACKED_ARTISTS = ["FACE", "MORGENSHTERN", "SLAVA MARLOW", "Valery Meladze", "Se
                    "Кишлак", "АКУЛИЧ", "Молодой Платон", "Lida", "СЕРЕГА ПИРАТ",
                    "Aarne", "ANIKV", "5mewmet", "whyspurky", "whylovly",
                    "Poshlaya Molly", "fleurnothappy", "zhanulka", "Skryptonite", "1.Kla$",
-                   "Scally Milano", "uglystephan", "Женя Трофимов", "Комната культуры"]
+                   "Scally Milano", "uglystephan", "Женя Трофимов", "Комната культуры", "Tima Belorusskih",
+                   "Асия", "Lx24", "Masha Hima", "Mzlff", "Глюкоза", "Navy", "HISTED", "TXVSTERPLAYA"]
 
 
 intents = discord.Intents.default()
@@ -87,7 +88,7 @@ async def on_presence_update(before: discord.Member, after: discord.Member):
             elif activity.type == discord.ActivityType.playing and activity.name in TRACKED_GAMES:
                 await channel.send(f'{after.mention}, Ви граєте у **{activity.name}**!\n\n' +
                                     ':bangbang: ЦЯ ГРА ВІД РОСІЙСЬКОГО ВИДАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! :bangbang:\n' +
-                                    ':bangbang: Граючи цю гру - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang::')
+                                    ':bangbang: Граючи цю гру - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang:')
                 break
 
 
