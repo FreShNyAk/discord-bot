@@ -34,7 +34,7 @@ TRACKED_GAMES = ["War Thunder", "World of Tanks Blitz", "World of Tanks", "Atomi
                  "The Franz Kafka Videogame", "Diplomacy is Not an Option", "Pixel Gun 3D: PC Edition", "TRAIL OUT", "Buckshot Roulette", "Lust Goddess",
                  "Pine Harbor", "Farm Frenzy", "Bee Island", "Egg", "INDIKA", "Ranch Simulator - Build, Farm, Hunt",
                  "Mortal Shell", "Expeditions: A MudRunner Game", "Biped", "Gatekeeper", "Armored Warfare", "Please, Don’t Touch Anything",
-                 "Total Conflict: Resistance", "Will To Live Online", "Heartbound", "Spirit of the Island", "Unusual Findings", "World of Warplanes", "Banana"]
+                 "Total Conflict: Resistance", "Will To Live Online", "Heartbound", "Spirit of the Island", "Unusual Findings", "World of Warplanes"]
 
 TRACKED_ARTISTS = ["FACE", "MORGENSHTERN", "SLAVA MARLOW", "Valery Meladze", "Sektor Gaza",
                    "Korol i Shut", "Egor Kreed", "Шайни", "GONE.Fludd", "Trezvyy Zaryad",
