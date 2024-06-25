@@ -77,11 +77,11 @@ async def on_ready():
 @client.event
 async def on_presence_update(before: discord.Member, after: discord.Member):
     channel = discord.utils.get(after.guild.text_channels, name=CHANNEL_NAME)
-    if after.activities and channel != None:
+    if after.activities and channel is not None:
         for activity in after.activities:
             if activity.type == discord.ActivityType.listening:
                 activity_artist = check_artists(activity.artist)
-                if activity_artist != None:
+                if activity_artist is not None:
                     await channel.send(f'{after.mention}, Ви слухаєте **{activity_artist}**!\n\n' +
                                         ':bangbang: ЦЯ МУЗИКА ВІД РОСІЙСЬКОГО ВИКОНАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! :bangbang:\n' + 
                                         ':bangbang: Слухаючи цю музику - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang:')
