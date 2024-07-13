@@ -35,7 +35,9 @@ TRACKED_GAMES = ["War Thunder", "World of Tanks Blitz", "World of Tanks", "Atomi
                  "Pine Harbor", "Farm Frenzy", "Bee Island", "Egg", "INDIKA", "Ranch Simulator - Build, Farm, Hunt",
                  "Mortal Shell", "Expeditions: A MudRunner Game", "Biped", "Gatekeeper", "Armored Warfare", "Please, Don’t Touch Anything",
                  "Total Conflict: Resistance", "Will To Live Online", "Heartbound", "Spirit of the Island", "Unusual Findings", "World of Warplanes",
-                 "Clustertruck", "Surgeon Simulator", "Not For Broadcast", "Streets of Rogue", "SpiderHeck", "Tinykin"]
+                 "Clustertruck", "Surgeon Simulator", "Not For Broadcast", "Streets of Rogue", "SpiderHeck", "Tinykin",
+                 "Genshin Impact", "Honkai: Star Rail", "Zenless Zone Zero", "Honkai Impact 3rd", "FlyMe2theMoon", "Zombiegal Kawaii",
+                 "Guns Girl Z", "Tears of Themis"]
 
 TRACKED_ARTISTS = ["FACE", "MORGENSHTERN", "SLAVA MARLOW", "Valery Meladze", "Sektor Gaza",
                    "Korol i Shut", "Egor Kreed", "Шайни", "GONE.Fludd", "Trezvyy Zaryad",
