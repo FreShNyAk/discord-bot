@@ -56,6 +56,8 @@ TRACKED_ARTISTS = ["FACE", "MORGENSHTERN", "SLAVA MARLOW", "Valery Meladze", "Se
                    "Асия", "Lx24", "Masha Hima", "Mzlff", "Глюкоза", "Navy", "HISTED", "TXVSTERPLAYA"]
 
 
+user_activities = {}
+
 intents = discord.Intents.default()
 intents.members = True
 intents.presences = True
@@ -79,20 +81,50 @@ async def on_ready():
 @client.event
 async def on_presence_update(before: discord.Member, after: discord.Member):
     channel = discord.utils.get(after.guild.text_channels, name=CHANNEL_NAME)
+
+    current_game = None
+    current_music = None
+    for activity in after.activities:
+        if activity.type == discord.ActivityType.playing:
+            current_game = activity.name
+            break
+        elif activity.type == discord.ActivityType.listening:
+            current_music = check_artists(activity.artist)
+            break
+
+    previous_game = user_activities.get(after.id, {}).get('game')
+    previous_music = user_activities.get(after.id, {}).get('music')
+        
     if after.activities and channel is not None:
         for activity in after.activities:
-            if activity.type == discord.ActivityType.listening:
-                activity_artist = check_artists(activity.artist)
-                if activity_artist is not None:
-                    await channel.send(f'{after.mention}, Ви слухаєте **{activity_artist}**!\n\n' +
+
+            if current_music and current_music in TRACKED_ARTISTS:
+                if current_music != previous_music and current_music is not None:
+                    if after.id not in user_activities:
+                        user_activities[after.id] = {}
+                    user_activities[after.id]['music'] = current_music
+                    await channel.send(f'{after.mention}, Ви слухаєте **{current_music}**!\n\n' +
                                         ':bangbang: ЦЯ МУЗИКА ВІД РОСІЙСЬКОГО ВИКОНАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! :bangbang:\n' + 
                                         ':bangbang: Слухаючи цю музику - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang:')
                     break
-            elif activity.type == discord.ActivityType.playing and activity.name in TRACKED_GAMES:
-                await channel.send(f'{after.mention}, Ви граєте у **{activity.name}**!\n\n' +
-                                    ':bangbang: ЦЯ ГРА ВІД РОСІЙСЬКОГО ВИДАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! :bangbang:\n' +
-                                    ':bangbang: Граючи цю гру - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang:')
-                break
+            else:
+                if after.id in user_activities and 'music' in user_activities[after.id]:
+                    del user_activities[after.id]['music']
+                    break
+
+            if current_game and current_game in TRACKED_GAMES:
+                if current_game != previous_game:
+                    if after.id not in user_activities:
+                        user_activities[after.id] = {}
+                    user_activities[after.id]['game'] = current_game
+                    await channel.send(f'{after.mention}, Ви граєте у **{current_game}**!\n\n' +
+                                        ':bangbang: ЦЯ ГРА ВІД РОСІЙСЬКОГО ВИДАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! :bangbang:\n' +
+                                        ':bangbang: Граючи цю гру - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang:')
+                    break
+            else:
+                if after.id in user_activities and 'game' in user_activities[after.id]:
+                    del user_activities[after.id]['game']
+                    break
 
 
 client.run(os.environ.get('TOKEN'))
