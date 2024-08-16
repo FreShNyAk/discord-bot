@@ -53,7 +53,8 @@ TRACKED_ARTISTS = ["FACE", "MORGENSHTERN", "SLAVA MARLOW", "Valery Meladze", "Se
                    "Aarne", "ANIKV", "5mewmet", "whyspurky", "whylovly",
                    "Poshlaya Molly", "fleurnothappy", "zhanulka", "Skryptonite", "1.Kla$",
                    "Scally Milano", "uglystephan", "Женя Трофимов", "Комната культуры", "Tima Belorusskih",
-                   "Асия", "Lx24", "Masha Hima", "Mzlff", "Глюкоза", "Navy", "HISTED", "TXVSTERPLAYA", "isq", "42PATH"]
+                   "Асия", "Lx24", "Masha Hima", "Mzlff", "Глюкоза", "Navy", "HISTED", "TXVSTERPLAYA", "isq", "42PATH",
+                   "Krutikov Music", "INTERWORLD"]
 
 
 user_activities = {}
