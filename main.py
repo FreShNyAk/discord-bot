@@ -64,7 +64,7 @@ async def on_presence_update(before: discord.Member, after: discord.Member):
                     user_activities[after.id]['music'] = current_music
                     await channel.send(f'{after.mention}, Ви слухаєте **{current_music}**!\n\n' +
                                         ':bangbang: ЦЯ МУЗИКА ВІД РОСІЙСЬКОГО ВИКОНАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! :bangbang:\n' + 
-                                        ':bangbang: Слухаючи цю музику - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang:')
+                                        ':bangbang: Слухати це неприйнятно та аморально по відношенню до ваших співгромадян, котрі гинуть під час російського вторгнення в Україну. :bangbang:')
                     break
             else:
                 if after.id in user_activities and 'music' in user_activities[after.id]:
@@ -78,7 +78,7 @@ async def on_presence_update(before: discord.Member, after: discord.Member):
                     user_activities[after.id]['game'] = current_game
                     await channel.send(f'{after.mention}, Ви граєте у **{current_game}**!\n\n' +
                                         ':bangbang: ЦЯ ГРА ВІД РОСІЙСЬКОГО ВИДАВЦЯ АБО ВІД ГРОМАДЯН ВОРОЖИХ ДЛЯ УКРАЇНИ ДЕРЖАВ! :bangbang:\n' +
-                                        ':bangbang: Граючи цю гру - ви підтримуєте і просуваєте проєкт, гроші від котрого надсилаються у рф та союзні для неї країни. :bangbang:')
+                                        ':bangbang: Грати в це неприйнятно та аморально по відношенню до ваших співгромадян, котрі гинуть під час російського вторгнення в Україну. :bangbang:')
                     break
             else:
                 if after.id in user_activities and 'game' in user_activities[after.id]:
