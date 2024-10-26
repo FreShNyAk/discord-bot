@@ -6,6 +6,8 @@ keep_alive()
 
 CHANNEL_NAME = "🐦┃листування"
 
+REQUIRED_ROLE_ID = os.environ.get('REQUIRED_ROLE_ID')
+
 def load_config():
     with open('config.json', 'r', encoding='utf-8') as f:
         config = json.load(f)
@@ -40,6 +42,10 @@ async def on_ready():
 @client.event
 async def on_presence_update(before: discord.Member, after: discord.Member):
     channel = discord.utils.get(after.guild.text_channels, name=CHANNEL_NAME)
+
+    required_role = discord.utils.get(after.roles, id=REQUIRED_ROLE_ID)
+    if not required_role:
+        return
 
     current_game = None
     current_music = None
