@@ -4,9 +4,9 @@ import json
 from keep_alive import keep_alive
 keep_alive()
 
+TOKEN = os.getenv('TOKEN')
+REQUIRED_ROLE_ID = os.getenv('REQUIRED_ROLE_ID')
 CHANNEL_NAME = "🐦┃листування"
-
-REQUIRED_ROLE_ID = os.environ.get('REQUIRED_ROLE_ID')
 
 def load_config():
     with open('config.json', 'r', encoding='utf-8') as f:
@@ -92,4 +92,4 @@ async def on_presence_update(before: discord.Member, after: discord.Member):
                     break
 
 
-client.run(os.environ.get('TOKEN'))
+client.run(TOKEN)
