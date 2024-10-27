@@ -4,8 +4,6 @@ import json
 from keep_alive import keep_alive
 keep_alive()
 
-TOKEN = os.getenv('TOKEN')
-REQUIRED_ROLE_ID = os.getenv('REQUIRED_ROLE_ID')
 CHANNEL_NAME = "🐦┃листування"
 
 def load_config():
@@ -41,11 +39,11 @@ async def on_ready():
 
 @client.event
 async def on_presence_update(before: discord.Member, after: discord.Member):
-    channel = discord.utils.get(after.guild.text_channels, name=CHANNEL_NAME)
-
-    required_role = discord.utils.get(after.roles, id=REQUIRED_ROLE_ID)
+    required_role = discord.utils.get(after.roles, id=os.environ.get('REQUIRED_ROLE_ID'))
     if not required_role:
         return
+        
+    channel = discord.utils.get(after.guild.text_channels, name=CHANNEL_NAME)
 
     current_game = None
     current_music = None
@@ -92,4 +90,4 @@ async def on_presence_update(before: discord.Member, after: discord.Member):
                     break
 
 
-client.run(TOKEN)
+client.run(os.environ.get('TOKEN'))
